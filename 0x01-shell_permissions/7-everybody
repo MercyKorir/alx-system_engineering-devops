@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -name hello | chmod 751 hello
+chmod ugo+x hello
