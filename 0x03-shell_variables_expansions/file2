@@ -1,1 +1,1 @@
-/bin/sed y/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM/ "$1 | more
+tr "[a-z][A-z]" "[n-za-m][N-ZA-M]"
