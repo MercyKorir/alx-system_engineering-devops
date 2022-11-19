@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#loops 10 times and displays diff text at diff no
+
+i=0
+
+while [ $i -lt 10 ]
+do
+  if [ $i -eq 3 ]
+  then
+    echo "bad luck"
+  elif [ $i -eq 7 ]
+  then
+    echo "good luck"
+  else
+    echo "School School"
+  fi
+  (( i++ ))
+done
