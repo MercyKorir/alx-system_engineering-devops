@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#displays Best School 10 times, 9th time displays Best School and Hi
+
+i=0
+
+while [ $i -lt 10 ]
+do
+	if [ $i -eq 0 ]
+	then
+		echo "Hi"
+	fi
+		echo "Best School"
+	(( i++ ))
+done
