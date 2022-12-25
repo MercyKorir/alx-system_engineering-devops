@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#using solution for task #0
+#make it short
+
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx start
+kill "$(pgrep 'nginx' | head -1)"
