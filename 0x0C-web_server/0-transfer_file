@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This script transfers a file from client
+#to server
+
+
