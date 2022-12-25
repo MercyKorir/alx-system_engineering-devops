@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Script contains command that fixes when curl
+#is run in port 80, a page that contains
+#Hello holberton is returned instead of error
+
+echo "ServerName localhost" >> /etc/apache2.conf
+service apache2 start
