@@ -1,11 +1,12 @@
 #!/usr/bin/bash
 # This script install and setup rules on web-01
 
+apt-get update
 apt-get install ufw
 ufw status
 ufw enable
+ufw default allow outgoing
 ufw default deny incoming
-ufw  default allow outgoing
 ufw allow 22/tcp
 ufw allow 443/tcp
 ufw allow 80/tcp
