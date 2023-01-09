@@ -8,6 +8,7 @@ COMMIT
 apt-get update
 apt-get install ufw
 ufw status
+ufw disable
 ufw enable
 ufw allow 22/tcp
 ufw allow 443/tcp
