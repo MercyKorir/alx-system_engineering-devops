@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+# This script install and setup rules on web-01
+
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
+apt-get update
+apt-get install ufw
+ufw status
+ufw enable
+ufw allow 22/tcp
+ufw allow 443/tcp
+ufw allow 80/tcp
