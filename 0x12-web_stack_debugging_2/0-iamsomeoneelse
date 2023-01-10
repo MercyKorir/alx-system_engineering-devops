@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This scripts run whoami cmd under user passed
+#+ as argument
+
+if [ "$#" -lt 1 ] || [ "$#" -gt 1 ]; then
+	echo "Enter only 1 arg"
+else
+	sudo -u "$1" whoami
+fi
