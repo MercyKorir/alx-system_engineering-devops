@@ -1,4 +1,8 @@
-#!/usr/bin/env bash
-#configure your ssh to connect to server
-
+Host *
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/school
+	SendEnv LANG LC_*
+	HashKnownHosts yes
+	GSSAPIAuthentication yes
+	GSSAPIDelegateCredentials no
 
