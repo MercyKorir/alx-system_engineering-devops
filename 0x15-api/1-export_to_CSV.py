@@ -17,7 +17,9 @@ if __name__ == "__main__":
     name_data = json.loads(names.text)
     csv_data = [[]]
     for item in todos:
-        csv_data.append([item.get("userId"), name_data.get("username"), item.get("completed"), item.get("title")])
+        csv_data.append(
+                [item.get("userId"), name_data.get("username"),
+                    item.get("completed"), item.get("title")])
     file_name = "{}.csv".format(str(sys.argv[1]))
     with open(file_name, 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
