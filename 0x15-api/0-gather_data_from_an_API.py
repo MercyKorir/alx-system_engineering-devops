@@ -5,7 +5,7 @@ import sys
 import urllib.request
 
 
-def get_todo_list(employee_id):
+if __name__ == "__main__":
     employee_id = int(sys.argv[1])
     url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
             employee_id)
@@ -27,8 +27,3 @@ def get_todo_list(employee_id):
           "tasks(" + str(completed_tasks) + "/" + str(total_tasks) + "):")
     for task in completed_task_title:
         print("\t" + task)
-
-
-if __name__ == "__main__":
-    employee_id = int(sys.argv[1])
-    get_todo_list(employee_id)
