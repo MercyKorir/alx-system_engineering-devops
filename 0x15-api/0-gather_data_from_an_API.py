@@ -2,7 +2,7 @@
 """Returns information about todo list progress."""
 import json
 import sys
-import urllib
+import urllib.request
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
