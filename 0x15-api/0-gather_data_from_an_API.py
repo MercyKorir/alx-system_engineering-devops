@@ -5,10 +5,12 @@ import urllib
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(employee_id)
+    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
+            employee_id)
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
-    name_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+    name_url = "https://jsonplaceholder.typicode.com/users/{}".format(
+            employee_id)
     name_response = urllib.request.urlopen(name_url)
     name_data = json.loads(name_response.read())
     employee_name = name_data["name"]
