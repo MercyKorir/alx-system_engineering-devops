@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """This script uses REST API for given employee ID
-and returns info on todolist progress"""
+
+and returns info on todolist progress
+"""
 import json
 import sys
 import urllib.request
