@@ -7,10 +7,12 @@ import urllib.request
 
 def get_todo_list(employee_id):
     employee_id = int(sys.argv[1])
-    url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
+            employee_id)
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
-    name_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    name_url = "https://jsonplaceholder.typicode.com/users/{}".format(
+            employee_id)
     name_response = urllib.request.urlopen(name_url)
     name_data = json.loads(name_response.read())
     employee_name = name_data["name"]
