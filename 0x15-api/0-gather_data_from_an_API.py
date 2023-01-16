@@ -29,7 +29,8 @@ def get_todo_list(employee_id):
             completed_task_title.append(task["title"])
 
     # Print the results
-    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+    print("Employee " + employee_name + " is done with " +
+          "tasks(" + str(completed_tasks) + "/" + str(total_tasks) + "):")
     for task in completed_task_title:
         print("\t" + task)
 
