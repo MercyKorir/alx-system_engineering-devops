@@ -6,6 +6,11 @@ import urllib.request
 
 
 def get_todo_list(employee_id):
+    """Returns progress of list after taking
+    Args:
+        employee_id: id of employee
+    """
+
     url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
