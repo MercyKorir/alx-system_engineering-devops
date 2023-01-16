@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""Returns information about todo list progress"""
+"""Returns information about todo list progress."""
 import json
 import sys
 import urllib.request
 
 
 def get_todo_list(employee_id):
-    """Makes a GET request to API and retrieves employee info"""
     url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
