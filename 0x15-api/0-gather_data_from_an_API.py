@@ -20,7 +20,3 @@ if __name__ == "__main__":
         if task["completed"] is True:
             completed_tasks += 1
             completed_task_title.append(task["title"])
-    print("Employee " + employee_name + " is done with " +
-          "tasks(" + str(completed_tasks) + "/" + str(total_tasks) + "):")
-    for task in completed_task_title:
-        print("\t" + task)
