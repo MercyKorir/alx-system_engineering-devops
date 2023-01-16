@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-# This script uses REST API for given employee ID
-# and returns info on todolist progress
+"""This script uses REST API for given employee ID and returns
+information about todo list progress
+"""
+import csv
 import json
 import sys
 import urllib.request
 
 
 def get_todo_list(employee_id):
-    # Makes a GET request to API and retrieves employee info
+    """Makes a GET request to API and retrieves employee info"""
     url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
@@ -32,6 +34,17 @@ def get_todo_list(employee_id):
           "tasks(" + str(completed_tasks) + "/" + str(total_tasks) + "):")
     for task in completed_task_title:
         print("\t" + task)
+
+    csv_data = [['userId', 'userName', 'completed', 'title']]
+    for item in data:
+        csv_data.append([item['userId'], employee_name, item['completed'],
+                        item['title']])
+
+    filename = "{}.csv".format(str(sys.argv[1]))
+
+    with open(filename, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerows(csv_data)
 
 
 if __name__ == "__main__":
