@@ -2,15 +2,10 @@
 """Returns information about todo list progress."""
 import json
 import sys
-import urllib.request
+import urllib
 
-
-def get_todo_list(employee_id):
-    """Returns progress of list after taking
-    Args:
-        employee_id: id of employee
-    """
-
+if __name__ == "__main__":
+    employee_id = int(sys.argv[1])
     url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
@@ -35,8 +30,3 @@ def get_todo_list(employee_id):
           "tasks(" + str(completed_tasks) + "/" + str(total_tasks) + "):")
     for task in completed_task_title:
         print("\t" + task)
-
-
-if __name__ == "__main__":
-    employee_id = int(sys.argv[1])
-    get_todo_list(employee_id)
