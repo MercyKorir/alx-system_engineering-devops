@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Returns information about todo list progress for given employee ID."""
+"""Returns to-do list information for a given employee ID."""
 import json
 import sys
 import urllib
