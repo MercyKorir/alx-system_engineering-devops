@@ -20,9 +20,9 @@ def get_todo_list(employee_id):
     total_tasks = len(data)
     completed_task_title = []
     for task in data:
-        if task["completed"] is True:
+        if task.get("completed") is True:
             completed_tasks += 1
-            completed_task_title.append(task["title"])
+            completed_task_title.append(task.get("title"))
     print("Employee " + employee_name + " is done with " +
           "tasks(" + str(completed_tasks) + "/" + str(total_tasks) + "):")
     for task in completed_task_title:
