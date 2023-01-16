@@ -15,7 +15,7 @@ def get_todo_list(employee_id):
             employee_id)
     name_response = urllib.request.urlopen(name_url)
     name_data = json.loads(name_response.read())
-    employee_name = name_data["name"]
+    employee_name = name_data.get("name")
     completed_tasks = 0
     total_tasks = len(data)
     completed_task_title = []
