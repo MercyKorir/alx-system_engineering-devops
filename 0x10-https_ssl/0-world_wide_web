@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script acceps 2 args
+#+ domain and subdomain
+
+domain=$1
+subdomain=$2
+
+display_info() {
+	subdomain=$1
+	dig_output=$(dig +short $subdomain.$domain)
+	record_type=$(echo $dig_output | awk "{print $5}")
+	destination=$(echo $dig_output | awk "{print $6}")
+	echo "The subdomain $subdomain is a $record_type record and points to $destination"
+}
+
+if [ -z "$subdomain" ]; then
+	display_info "www"
+	display_info "lb-01"
+	display_info "web-01"
+	display_info "web-02"
+else
+	display_info $subdomain
+fi
