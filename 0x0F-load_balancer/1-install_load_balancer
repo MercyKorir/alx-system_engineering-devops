@@ -2,8 +2,9 @@
 # This installs and configure HAproxy
 #+ on lb01 server
 
-apt-get update -y
-apt-get install haproxy -y
+apt-get update
+apt-get install -y haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
 bash -c 'cat << EOF > /etc/haproxy/haproxy.cfg
 global
         daemon
