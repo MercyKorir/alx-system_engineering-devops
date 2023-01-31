@@ -6,42 +6,24 @@ of given keywords
 import requests
 
 
-def count_words(subreddit, word_list, after=None, count={}):
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    params = {'limit': 100, 'after': after}
-    response = requests.get("https://www.reddit.com/r/{}/hot.json".format(
-        subreddit), headers=headers, params=params)
-
-    if response.status_code != 200:
+def count_words(subreddit, word_list, after='', word_count={}):
+    headers = {
+        'User-Agent': 'MyBot/0.0.1'
+    }
+    url = "https://www.reddit.com/r/{}/hot/.json?limit=100&after={}".format(
+            subreddit, after)
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        for child in data['data']['children']:
+            title = child['data']['title'].lower()
+            for word in word_list:
+                if word in title:
+                    word_count[word] = word_count.get(word, 0) + 1
+        if data['data']['after']:
+            return count_words(
+                    subreddit, word_list, data['data']['after'], word_count)
+        else:
+            return sorted(word_count.items(), key=lambda x: (-x[1], x[0]))
+    else:
         return None
-
-    data = response.json()
-    children = data['data']['children']
-
-    if not children:
-        return None
-
-    for child in children:
-        title = child['data']['title'].lower()
-        words = title.split()
-        for word in words:
-            word = word.strip('.!_')
-            if word in word_list:
-                if word not in count:
-                    count[word] = 0
-                count[word] += 1
-    after = data['data']['after']
-    if after:
-        count_words(subreddit, word_list, after, count)
-
-    return count
-
-
-def top_ten_words(subreddit, word_list):
-    count = count_words(subreddit, word_list)
-    if not count:
-        return
-
-    sorted_count = sorted(count.items(), key=lambda x: (-x[1], x[0]))
-    for word, frequency in sorted_count[:10]:
-        print(word, frequency)
