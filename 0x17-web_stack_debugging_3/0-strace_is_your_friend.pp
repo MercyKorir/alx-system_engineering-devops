@@ -1,4 +1,6 @@
-exec { 'fix-apache-error':
-  command => 'chmod 755 /path/to/file/or/directory',
-  onlyif  => 'test -f /path/to/file/or/directory && !(stat -c %a /path/to/file/or/directory | grep 755)',
+# Fixes apache error returning 500
+
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
